@@ -8,4 +8,5 @@ import (
 
 type ProductRepository interface {
 	FindAll(tx *sql.Tx) ([]entity.Product, error)
+	Create(tx *sql.Tx, product *entity.Product) error
 }

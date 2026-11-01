@@ -16,6 +16,8 @@ func (c *RouteConfig) Setup() {
 	fs := http.FileServer(http.Dir("static"))
 	c.Mux.Handle("GET /static/", http.StripPrefix("/static/", fs))
 
-	c.Mux.HandleFunc("GET /", c.PageHandler.Home)
-	c.Mux.HandleFunc("GET /products", c.ProductHandler.GetAllProduct)
+	c.Mux.HandleFunc("GET /", c.PageHandler.HomePage)
+	c.Mux.HandleFunc("GET /products", c.ProductHandler.GetProductsHandler)
+	c.Mux.HandleFunc("POST /products", c.ProductHandler.CreateProductHandler)
+	c.Mux.HandleFunc("GET /products/create", c.PageHandler.CreateProductForm)
 }

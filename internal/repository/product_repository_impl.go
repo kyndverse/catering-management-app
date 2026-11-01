@@ -50,3 +50,18 @@ func (p *productRepositoryImpl) FindAll(tx *sql.Tx) ([]entity.Product, error) {
 	}
 	return products, nil
 }
+
+func (p *productRepositoryImpl) Create(tx *sql.Tx, product *entity.Product) error {
+	rows, err := tx.Exec("INSERT INTO products(nama, harga, stok, keterangan) VALUES(?, ?, ?, ?)", product.Nama, product.Harga, product.Stok, product.Keterangan)
+	if err != nil {
+		return err
+	}
+
+	id, err := rows.LastInsertId()
+	if err != nil {
+		return err
+	}
+
+	product.ID = int(id)
+	return nil
+}

@@ -14,7 +14,7 @@ type Renderer struct {
 }
 
 func NewRenderer() *Renderer {
-	files := []string{"home.html", "product-page.html"}
+	files := []string{"home-page.html", "product-page.html", "product-form-page.html"}
 
 	renderer := &Renderer{
 		template: make(map[string]*template.Template),
@@ -23,10 +23,8 @@ func NewRenderer() *Renderer {
 	for _, file := range files {
 		renderer.template[file] = template.Must(template.New("layout").Funcs(funcs).ParseFiles(
 			"templates/layout.html",
-			// "templates/header.html",
-			// "templates/sidebar.html",
-			// "templates/footer.html",
-			"templates/"+file,
+			"templates/sidebar.html",
+			"templates/pages/"+file,
 		))
 	}
 

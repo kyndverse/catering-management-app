@@ -1,0 +1,44 @@
+{{define "content"}} {{with .ProductForm}}
+<div class="page-header">
+  <h2>{{.Judul}}</h2>
+</div>
+
+<form class="form" action="{{.Action}}" method="POST">
+  <div class="field">
+    <label for="name">Name</label>
+    <input id="name" type="text" name="nama" value="{{.Data.Nama}}" />
+    {{with index .Errors "Nama"}}
+    <small class="error">{{.}}</small>
+    {{end}}
+  </div>
+
+  <div class="field">
+    <label for="price">Price</label>
+    <input id="price" type="number" name="harga" value="{{.Data.Harga}}" />
+    {{with index .Errors "Harga"}}
+    <small class="error">{{.}}</small>
+    {{end}}
+  </div>
+
+  <div class="field">
+    <label for="stock">Stock</label>
+    <input id="stock" type="number" name="stok" value="{{.Data.Stok}}" />
+    {{with index .Errors "Stok"}}
+    <small class="error">{{.}}</small>
+    {{end}}
+  </div>
+
+  <div class="field">
+    <label for="description">Description</label>
+    <textarea id="description" name="keterangan">{{.Data.Keterangan}}</textarea>
+    {{with index .Errors "Keterangan"}}
+    <small class="error">{{.}}</small>
+    {{end}}
+  </div>
+
+  <div class="form-actions">
+    <button class="button" type="submit">Submit</button>
+    <a class="button button--secondary" href="/products">Cancel</a>
+  </div>
+</form>
+{{end}} {{end}}

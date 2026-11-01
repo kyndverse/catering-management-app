@@ -4,35 +4,37 @@ import (
 	"database/sql"
 	"net/http"
 
+	"github.com/kyndverse/catering-management-app/internal/handler"
+	"github.com/kyndverse/catering-management-app/internal/repository"
 	"github.com/kyndverse/catering-management-app/internal/router"
+	"github.com/kyndverse/catering-management-app/internal/service"
+	"github.com/sirupsen/logrus"
 )
 
 type BootstrapConfig struct {
-	DB  *sql.DB
-	Mux *http.ServeMux
+	Mux    *http.ServeMux
+	Logger *logrus.Logger
+	DB     *sql.DB
 }
 
 func Bootstrap(config *BootstrapConfig) {
 	// setup repo
+	productRepo := repository.NewProductRepository(config.Logger)
 
 	// setup service
+	productService := service.NewProductService(config.DB, productRepo)
 
 	// setup handler
-	
+	renderer := handler.NewRenderer()
+	pageHandler := handler.NewPageHandler(renderer)
+	productRender := handler.NewProductHandler(config.Logger, renderer, productService)
+
+	// setup route
 	routeConfig := router.RouteConfig{
-		Mux: config.Mux,
-		// pass handler
-		// pass middleware
+		Mux:            config.Mux,
+		PageHandler:    pageHandler,
+		ProductHandler: productRender,
 	}
 
 	routeConfig.Setup()
-
-	server := &http.Server{
-		Addr:    ":3000",
-		Handler: config.Mux,
-	}
-
-	if err := server.ListenAndServe(); err != nil {
-		panic(err)
-	}
 }

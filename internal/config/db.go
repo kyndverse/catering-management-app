@@ -4,18 +4,11 @@ import (
 	"database/sql"
 	"time"
 
-	"github.com/go-sql-driver/mysql"
+	_ "github.com/go-sql-driver/mysql"
 )
 
-func NewDB() *sql.DB {
-	cfg := mysql.NewConfig()
-	cfg.User = "root"
-	cfg.Passwd = ""
-	cfg.Net = "tcp"
-	cfg.Addr = "localhost:3306"
-	cfg.DBName = ""
-
-	db, err := sql.Open("mysql", cfg.FormatDSN())
+func NewDB(config *ConfigEnv) *sql.DB {
+	db, err := sql.Open("mysql", config.DBDSN)
 	if err != nil {
 		panic(err)
 	}

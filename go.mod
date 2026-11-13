@@ -3,6 +3,7 @@ module github.com/kyndverse/catering-management-app
 go 1.26.5
 
 require (
+	github.com/go-chi/chi/v5 v5.5.0
 	github.com/go-playground/form/v4 v4.5.1
 	github.com/go-playground/locales v0.14.2
 	github.com/go-playground/universal-translator v0.18.2

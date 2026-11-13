@@ -2,8 +2,8 @@ package config
 
 import (
 	"database/sql"
-	"net/http"
 
+	"github.com/go-chi/chi/v5"
 	"github.com/go-playground/form/v4"
 	"github.com/kyndverse/catering-management-app/internal/handler"
 	"github.com/kyndverse/catering-management-app/internal/repository"
@@ -14,7 +14,7 @@ import (
 )
 
 type BootstrapConfig struct {
-	Mux       *http.ServeMux
+	Router    chi.Router
 	Logger    *logrus.Logger
 	Decoder   *form.Decoder
 	Validator *validator.Validator
@@ -34,8 +34,8 @@ func Bootstrap(config *BootstrapConfig) {
 	productRender := handler.NewProductHandler(config.Logger, renderer, config.Decoder, productService)
 
 	// setup route
-	routeConfig := router.RouteConfig{
-		Mux:            config.Mux,
+	routeConfig := &router.RouteConfig{
+		Router:         config.Router,
 		PageHandler:    pageHandler,
 		ProductHandler: productRender,
 	}

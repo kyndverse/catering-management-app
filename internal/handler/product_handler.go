@@ -3,9 +3,10 @@ package handler
 import (
 	"net/http"
 
+	"golang-web/internal/model"
+	"golang-web/internal/service"
+
 	"github.com/go-playground/form/v4"
-	"github.com/kyndverse/catering-management-app/internal/model"
-	"github.com/kyndverse/catering-management-app/internal/service"
 
 	"github.com/sirupsen/logrus"
 )

@@ -4,10 +4,11 @@ import (
 	"fmt"
 	"net/http"
 
+	"golang-web/internal/config"
+	"golang-web/internal/validator"
+
 	"github.com/go-chi/chi/v5"
 	"github.com/go-playground/form/v4"
-	"github.com/kyndverse/catering-management-app/internal/config"
-	"github.com/kyndverse/catering-management-app/internal/validator"
 )
 
 func main() {

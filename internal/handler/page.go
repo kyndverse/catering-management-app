@@ -3,7 +3,7 @@ package handler
 import (
 	"net/http"
 
-	"github.com/kyndverse/catering-management-app/internal/model"
+	"golang-web/internal/model"
 )
 
 type PageHandler struct {

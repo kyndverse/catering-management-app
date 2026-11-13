@@ -4,10 +4,11 @@ import (
 	"context"
 	"database/sql"
 
-	"github.com/kyndverse/catering-management-app/internal/domain/entity"
-	"github.com/kyndverse/catering-management-app/internal/model"
-	"github.com/kyndverse/catering-management-app/internal/repository"
-	"github.com/kyndverse/catering-management-app/internal/validator"
+	"golang-web/internal/domain/entity"
+	"golang-web/internal/model"
+	"golang-web/internal/repository"
+	"golang-web/internal/validator"
+
 	"github.com/sirupsen/logrus"
 )
 

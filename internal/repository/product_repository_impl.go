@@ -3,7 +3,8 @@ package repository
 import (
 	"database/sql"
 
-	"github.com/kyndverse/catering-management-app/internal/domain/entity"
+	"golang-web/internal/domain/entity"
+
 	"github.com/sirupsen/logrus"
 )
 

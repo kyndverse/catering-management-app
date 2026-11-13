@@ -3,13 +3,14 @@ package config
 import (
 	"database/sql"
 
+	"golang-web/internal/handler"
+	"golang-web/internal/repository"
+	"golang-web/internal/router"
+	"golang-web/internal/service"
+	"golang-web/internal/validator"
+
 	"github.com/go-chi/chi/v5"
 	"github.com/go-playground/form/v4"
-	"github.com/kyndverse/catering-management-app/internal/handler"
-	"github.com/kyndverse/catering-management-app/internal/repository"
-	"github.com/kyndverse/catering-management-app/internal/router"
-	"github.com/kyndverse/catering-management-app/internal/service"
-	"github.com/kyndverse/catering-management-app/internal/validator"
 	"github.com/sirupsen/logrus"
 )
 

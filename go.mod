@@ -1,4 +1,4 @@
-module github.com/kyndverse/catering-management-app
+module golang-web
 
 go 1.26.5
 

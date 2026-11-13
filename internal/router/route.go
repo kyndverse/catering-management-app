@@ -3,8 +3,9 @@ package router
 import (
 	"net/http"
 
+	"golang-web/internal/handler"
+
 	"github.com/go-chi/chi/v5"
-	"github.com/kyndverse/catering-management-app/internal/handler"
 )
 
 type RouteConfig struct {
